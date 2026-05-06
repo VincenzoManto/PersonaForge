@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  persona-forge:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    # Command can be overridden, by default it will show help
+    command: ["--help"]
