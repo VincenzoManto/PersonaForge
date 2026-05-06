@@ -1,102 +1,87 @@
 <div align="center">
 
-# 🧬 PersonaForge
+# 🧬 PersonaForge // OSINT & Digital Necromancy Engine
 
-**Resurrect digital footprints. Forge AI clones from your chat history.**
+**Resurrect digital footprints. Forge hyper-realistic AI clones from raw chat history.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Memory: RAG](https://img.shields.io/badge/Memory-ChromaDB-blueviolet.svg)](#infinite-memory-rag)
+[![Voice: Ready](https://img.shields.io/badge/Voice-ElevenLabs%20Ready-ff69b4.svg)](#voice-cloning)
+
+> ⚠️ **DISCLAIMER:** This tool is for research, memorialization, and personal use. Do not clone people without their consent.
 
 [English](#features) • [Italiano](#come-funziona-italiano)
 
 </div>
 
-**PersonaForge** is an open-source, local-first engine that reads your chat histories (WhatsApp, Telegram, Discord, etc.) and reverse-engineers the "digital soul" of a person. It extracts their tone, slang, common memories, and behavior, outputting datasets ready for **AI Fine-tuning**, **In-Context Simulation**, or **Character Cards** for roleplay platforms.
+**PersonaForge** is an open-source, local-first engine that reads your chat histories (WhatsApp, Telegram, Discord) and reverse-engineers the "digital soul" of a person. It extracts their psychological profile, slang, memories, and even their voice, outputting datasets ready for **AI Fine-tuning**, **In-Context Simulation**, or **Roleplay Platforms**.
 
 ---
 
-## 🌟 Why PersonaForge?
+## 🌟 God-Tier Features
 
-- 🧬 **Digital Soul Extraction**: More than just parsers. It analyzes speech patterns and contextual memories.
-- 🎭 **Universal Export**: Generate JSONL datasets for OpenAI/Mistral finetuning, or **Character Cards (V2)** for SillyTavern and text-generation-webui.
-- 🤖 **Omni-Model Integration**: Native support for 100+ LLMs via `litellm` (OpenAI, Anthropic, LLaMA 3, Gemini, local Ollama).
-- 🔒 **Privacy First**: 100% offline parsing. Your personal chats never touch external servers until *you* decide to chat with them.
+- 🧠 **Psychological Profiling**: Uses LLMs to automatically generate a `Character Card V2` detailing the target's Big Five personality traits, catchphrases, and core fears.
+- 📚 **Infinite Memory (RAG)**: Indexes your *entire* chat history into a local ChromaDB Vector Database. The clone will remember what you said to them 4 years ago.
+- 🎙️ **Voice Cloning Pipeline**: Automatically isolates and extracts clean `.ogg` voice notes from Telegram to train ElevenLabs or RVC voice models.
+- 🎭 **Universal Export**: Generate JSONL datasets for OpenAI/Mistral finetuning, or Character Cards for SillyTavern.
+- 🤖 **Omni-Model Integration**: Native support for 100+ LLMs via `litellm` (OpenAI, Anthropic, LLaMA 3, local Ollama).
+- 🔒 **Privacy First**: 100% offline parsing.
 
 ---
 
 ## 🏗️ Architecture
 
 ```mermaid
-graph LR
-    A[WhatsApp Export] --> C(PersonaForge Parsers)
-    B[Telegram JSON] --> C
-    C --> D{Dataset Pipeline}
-    D --> E[JSONL Fine-tuning]
-    D --> F[Character Card V2]
-    D --> G[Few-Shot Memory Context]
-    E --> H((Your Clone AI))
-    F --> H
-    G --> H
+graph TD
+    A[Raw Chat Data] --> B(PersonaForge Engine)
+    B --> C[Psychological Profiler]
+    B --> D[Audio Extractor]
+    B --> E[VectorDB / RAG]
+    C --> F(Character Card V2)
+    D --> G(Voice Dataset for RVC)
+    E --> H(Infinite Memory Context)
+    F & H --> I((Your Omni-Clone))
 ```
 
-## 🚀 Quickstart
+## 🚀 Extreme Quickstart
 
-### 1. Installation
-
-Clone the repository and install the dependencies. We recommend using a virtual environment or Docker.
-
+### 1. Extract the Persona & Build Memory
 ```bash
-git clone https://github.com/yourusername/persona-forge.git
-cd persona-forge
-pip install -r requirements.txt
+# 1. Parse the chat
+python main.py parse --app whatsapp --file chat.txt --target "John" --output john.jsonl
+
+# 2. Extract Psychological Profile (Digital Soul)
+python main.py profile --dataset john.jsonl --model "gpt-4-turbo"
+
+# 3. Build Infinite Memory (ChromaDB)
+python main.py memory --dataset john.jsonl
+
+# 4. Extract Voice Notes (If using Telegram)
+python main.py voice --file telegram_export.json
 ```
 
-### 2. Extract a Persona
-
-Export your chat from WhatsApp (without media) or Telegram (JSON export).
-
-```bash
-# Parse the chat and build the cognitive dataset
-python main.py parse --app whatsapp --file chat_export.txt --target "John Doe" --output john_dataset.jsonl
-```
-
-### 3. Talk to the Clone
-
-Use our built-in terminal UI to talk to the cloned persona via In-Context Learning (no finetuning required!).
-
+### 2. Talk to the Clone
+Use the built-in terminal UI to talk to the cloned persona.
 ```bash
 export OPENAI_API_KEY="sk-..."
-python main.py chat --dataset john_dataset.jsonl --model "gpt-4-turbo"
+python main.py chat --dataset john.jsonl --model "gpt-4-turbo"
 ```
-
-*Want to run it locally?* Just use `--model "ollama/llama3"`!
-
----
-
-## roadmap 🗺️
-
-- [x] WhatsApp & Telegram Parsers
-- [x] JSONL Generation for Finetuning
-- [x] CLI Chat Interface
-- [ ] Automated Character Card V2 generation (Personality extraction via LLM)
-- [ ] Discord Chat Parser
-- [ ] Voice cloning integration (ElevenLabs/XTTS)
 
 ---
 
 ## 🇮🇹 Come funziona (Italiano)
 
-**PersonaForge** è uno strumento progettato per essere unico e potente: legge gli archivi delle tue app di messaggistica, isola il modo di parlare, le espressioni tipiche e i ricordi della persona bersaglio (target), e ne crea una copia digitale. 
+Abbiamo spinto **PersonaForge** oltre i limiti. Non è solo un estrattore di testo, è un motore di "necromanzia digitale". 
+Le nuove feature includono:
 
-Questo dataset estratto può essere usato in 3 modi:
-1. **Fine-Tuning Puro**: Addestrare un modello (es. GPT-4 o LLaMA) in modo che i "pesi" della rete neurale assorbano lo stile della persona.
-2. **Character Cards**: Esportare un file di personalità per software come SillyTavern.
-3. **In-Context Agent**: Usare la nostra CLI per parlare immediatamente con la copia della persona tramite prompt avanzati (supporta modelli locali e cloud).
+1. **Memoria Infinita (RAG)**: Tutto il tuo storico chat viene vettorizzato in un database locale (ChromaDB). Quando parli con il clone, lui andrà a ripescare i ricordi esatti legati a ciò di cui state parlando.
+2. **Profilazione Psicologica**: Il comando `profile` scansiona la chat e genera una *Character Card* (JSON) con i tratti della personalità del target (le sue paure, come scrive, le sue catchphrase).
+3. **Clonazione Vocale**: Il comando `voice` estrae automaticamente tutti i messaggi vocali dal target isolandoli in una cartella, pronti per essere dati in pasto a ElevenLabs o RVC per clonare la voce reale!
+4. **Chat In-Context multi-modello**: Parla con il clone usando LLaMA 3 in locale o GPT-4 in cloud.
 
-Tutto il processamento del testo avviene **in locale**, garantendo la massima privacy per le tue chat.
+**Tutto offline. Tutto privato.**
 
 <div align="center">
-<i>Built with ❤️ for the open-source AI community.</i>
+<i>Pushing the boundaries of Open-Source AI.</i>
 </div>
