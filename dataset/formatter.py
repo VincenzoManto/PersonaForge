@@ -7,8 +7,8 @@ def create_jsonl_dataset(messages, target_name, output_file):
     """
     dataset = []
     
-    # Simple logic: group consecutive messages by the same sender,
-    # then pair "Other -> Target" as prompt/completion or user/assistant.
+    
+    
     
     conversations = []
     current_user_msg = ""
@@ -29,7 +29,7 @@ def create_jsonl_dataset(messages, target_name, output_file):
                 current_target_msg += "\n" + text
         else:
             if last_sender == target_name and current_user_msg and current_target_msg:
-                # Save the pair
+                
                 conversations.append({
                     "messages": [
                         {"role": "system", "content": f"You are {target_name}. Respond as they would, matching their tone and style."},

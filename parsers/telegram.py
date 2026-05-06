@@ -12,7 +12,7 @@ def parse_telegram(file_path):
     for msg in data.get("messages", []):
         if msg.get("type") == "message" and msg.get("from") and msg.get("text"):
             
-            # Handle text that is a list of entities
+            
             text = msg["text"]
             if isinstance(text, list):
                 parsed_text = ""

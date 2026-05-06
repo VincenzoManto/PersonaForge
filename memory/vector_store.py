@@ -19,12 +19,12 @@ def build_memory_bank(dataset_file, collection_name="persona_memory"):
             user_msg = data["messages"][1]["content"]
             target_msg = data["messages"][2]["content"]
             
-            # We store the interaction
+            
             doc = f"User said: {user_msg}\nTarget replied: {target_msg}"
             documents.append(doc)
             ids.append(f"mem_{i}")
             
-    # Batch add to avoid limits
+    
     batch_size = 5400
     for i in range(0, len(documents), batch_size):
         collection.add(

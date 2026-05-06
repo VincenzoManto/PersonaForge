@@ -9,7 +9,7 @@ def parse_whatsapp(file_path):
     """
     messages = []
     
-    # Regex to match basic whatsapp format (brackets or no brackets)
+    
     pattern = re.compile(r'^(?:\[)?(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}[, ]+\d{1,2}:\d{2}(?::\d{2})?)(?:\])?[\s\-]+([^:]+):\s*(.*)$')
     
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -23,7 +23,7 @@ def parse_whatsapp(file_path):
                     "text": content.strip()
                 })
             elif messages:
-                # Append multi-line messages
+                
                 messages[-1]["text"] += "\n" + line.strip()
                 
     return messages

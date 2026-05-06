@@ -8,11 +8,11 @@ def extract_psychological_profile(dataset_file, model_name="gpt-4-turbo", output
     """
     messages_text = ""
     with open(dataset_file, 'r', encoding='utf-8') as f:
-        # Read a sample of the dataset to avoid token limits, say last 50 interactions
+        
         lines = f.readlines()[-50:]
         for line in lines:
             data = json.loads(line)
-            # user and assistant
+            
             messages_text += f'User: {data["messages"][1]["content"]}\n'
             messages_text += f'Target: {data["messages"][2]["content"]}\n\n'
 
