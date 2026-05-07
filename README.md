@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧬 PersonaForge // OSINT & Digital Necromancy Engine
+# 🧬 PersonaForge: AI Clone Generator
 
 **Resurrect digital footprints. Forge hyper-realistic AI clones from raw chat history.**
 
